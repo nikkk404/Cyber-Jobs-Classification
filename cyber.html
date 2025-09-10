@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cybersecurity Careers Explorer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #001f3f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        nav li {
+            margin: 0 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #228B22;
+        }
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        #search {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+            margin: 20px 0;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+        .job-category {
+            margin-bottom: 30px;
+        }
+        .job-category h2 {
+            color: #001f3f;
+        }
+        details {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        summary {
+            font-weight: bold;
+            color: #001f3f;
+            display: flex;
+            align-items: center;
+        }
+        summary i {
+            margin-right: 10px;
+            color: #228B22;
+        }
+        details[open] summary {
+            color: #228B22;
+        }
+        .job-details p {
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #001f3f;
+            color: white;
+            cursor: pointer;
+        }
+        th:hover {
+            background: #228B22;
+        }
+        footer {
+            background: #001f3f;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+            }
+            nav li {
+                margin: 10px 0;
+            }
+            table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cybersecurity Careers Explorer</h1>
+        <nav>
+            <ul>
+                <!-- <li><a href="#home">Home</a></li> -->
+                <li><a href="#job-levels">Job Levels</a></li>
+                <li><a href="#all-positions">All Positions</a></li>
+                <li><a href="#about">About Cybersecurity</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- <section id="home">
+            <h2>Welcome to Cybersecurity Careers Explorer</h2>
+            <p>Explore various careers in the dynamic field of cybersecurity. Use the search bar to find specific jobs or navigate to other sections for more details.</p>
+            <input type="text" id="search" placeholder="Search jobs by keyword (e.g., analyst, senior)">
+            <p>Featured Jobs: Dive into roles like Cybersecurity Analyst or Penetration Tester to start your journey.</p>
+        </section> -->
+        <section id="job-levels" style="display: none;">
+            <h2>Job Levels Breakdown</h2>
+            <p>Here you can compare jobs across entry, mid, and senior levels. Sort the table by clicking on headers.</p>
+            <table id="levels-table">
+                <thead>
+                    <tr>
+                        <th data-sort="role">Role</th>
+                        <th data-sort="level">Level</th>
+                        <th data-sort="experience">Experience (Years)</th>
+                        <th data-sort="salary">Salary Range (INR LPA)</th>
+                        <th>Key Skills</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-role="Cybersecurity Analyst" data-level="Entry" data-experience="0" data-salary="500000">
+                        <td>Cybersecurity Analyst</td><td>Entry</td><td>0-2</td><td>5-8</td><td>Firewalls, IDS, Basic Python</td>
+                    </tr>
+                    <tr data-role="Cybersecurity Analyst" data-level="Mid" data-experience="3" data-salary="1000000">
+                        <td>Cybersecurity Analyst</td><td>Mid</td><td>3-5</td><td>10-15</td><td>Advanced Monitoring, SIEM Tools</td>
+                    </tr>
+                    <tr data-role="Cybersecurity Analyst" data-level="Senior" data-experience="5" data-salary="2000000">
+                        <td>Cybersecurity Analyst</td><td>Senior</td><td>5+</td><td>20-30</td><td>Threat Hunting, Leadership</td>
+                    </tr>
+                    <tr data-role="Penetration Tester" data-level="Entry" data-experience="0" data-salary="600000">
+                        <td>Penetration Tester</td><td>Entry</td><td>0-2</td><td>6-10</td><td>Basic Hacking Tools, Kali Linux</td>
+                    </tr>
+                    <tr data-role="Penetration Tester" data-level="Mid" data-experience="3" data-salary="1200000">
+                        <td>Penetration Tester</td><td>Mid</td><td>3-5</td><td>12-18</td><td>Metasploit, Burp Suite</td>
+                    </tr>
+                    <tr data-role="Penetration Tester" data-level="Senior" data-experience="5" data-salary="2500000">
+                        <td>Penetration Tester</td><td>Senior</td><td>5+</td><td>25-40</td><td>Advanced Exploitation, Team Lead</td>
+                    </tr>
+                    <!-- Add more rows for other roles similarly -->
+                    <tr data-role="Security Engineer" data-level="Entry" data-experience="0" data-salary="500000">
+                        <td>Security Engineer</td><td>Entry</td><td>0-2</td><td>5-8</td><td>Network Security, Firewalls</td>
+                    </tr>
+                    <tr data-role="Security Engineer" data-level="Mid" data-experience="3" data-salary="1100000">
+                        <td>Security Engineer</td><td>Mid</td><td>3-5</td><td>11-16</td><td>Encryption, VPN</td>
+                    </tr>
+                    <tr data-role="Security Engineer" data-level="Senior" data-experience="5" data-salary="2200000">
+                        <td>Security Engineer</td><td>Senior</td><td>5+</td><td>22-35</td><td>Architecture Design</td>
+                    </tr>
+                    <tr data-role="Incident Response Specialist" data-level="Entry" data-experience="0" data-salary="550000">
+                        <td>Incident Response Specialist</td><td>Entry</td><td>0-2</td><td>5.5-9</td><td>Incident Logging, Basic Forensics</td>
+                    </tr>
+                    <tr data-role="Incident Response Specialist" data-level="Mid" data-experience="3" data-salary="1200000">
+                        <td>Incident Response Specialist</td><td>Mid</td><td>3-5</td><td>12-18</td><td>Containment Strategies</td>
+                    </tr>
+                    <tr data-role="Incident Response Specialist" data-level="Senior" data-experience="5" data-salary="2500000">
+                        <td>Incident Response Specialist</td><td>Senior</td><td>5+</td><td>25-40</td><td>Crisis Management</td>
+                    </tr>
+                    <tr data-role="Security Architect" data-level="Mid" data-experience="3" data-salary="1500000">
+                        <td>Security Architect</td><td>Mid</td><td>3-5</td><td>15-25</td><td>System Design, Risk Assessment</td>
+                    </tr>
+                    <tr data-role="Security Architect" data-level="Senior" data-experience="5" data-salary="3000000">
+                        <td>Security Architect</td><td>Senior</td><td>5+</td><td>30-50</td><td>Enterprise Architecture</td>
+                    </tr>
+                    <tr data-role="Chief Information Security Officer" data-level="Senior" data-experience="10" data-salary="5000000">
+                        <td>Chief Information Security Officer</td><td>Senior</td><td>10+</td><td>50-100</td><td>Strategic Leadership, Policy Making</td>
+                    </tr>
+                    <tr data-role="Cryptographer" data-level="Entry" data-experience="0" data-salary="700000">
+                        <td>Cryptographer</td><td>Entry</td><td>0-2</td><td>7-12</td><td>Basic Encryption Algorithms</td>
+                    </tr>
+                    <tr data-role="Cryptographer" data-level="Mid" data-experience="3" data-salary="1500000">
+                        <td>Cryptographer</td><td>Mid</td><td>3-5</td><td>15-25</td><td>Advanced Crypto Systems</td>
+                    </tr>
+                    <tr data-role="Cryptographer" data-level="Senior" data-experience="5" data-salary="3000000">
+                        <td>Cryptographer</td><td>Senior</td><td>5+</td><td>30-50</td><td>Research in Cryptography</td>
+                    </tr>
+                    <!-- Continue for all 25 roles, similar pattern -->
+                    <tr data-role="Digital Forensics Analyst" data-level="Entry" data-experience="0" data-salary="500000">
+                        <td>Digital Forensics Analyst</td><td>Entry</td><td>0-2</td><td>5-8</td><td>Data Recovery Tools</td>
+                    </tr>
+                    <tr data-role="Digital Forensics Analyst" data-level="Mid" data-experience="3" data-salary="1000000">
+                        <td>Digital Forensics Analyst</td><td>Mid</td><td>3-5</td><td>10-15</td><td>Forensic Software</td>
+                    </tr>
+                    <tr data-role="Digital Forensics Analyst" data-level="Senior" data-experience="5" data-salary="2000000">
+                        <td>Digital Forensics Analyst</td><td>Senior</td><td>5+</td><td>20-30</td><td>Court Testimony</td>
+                    </tr>
+                    <tr data-role="Vulnerability Assessor" data-level="Entry" data-experience="0" data-salary="500000">
+                        <td>Vulnerability Assessor</td><td>Entry</td><td>0-2</td><td>5-8</td><td>Scanning Tools</td>
+                    </tr>
+                    <tr data-role="Vulnerability Assessor" data-level="Mid" data-experience="3" data-salary="1000000">
+                        <td>Vulnerability Assessor</td><td>Mid</td><td>3-5</td><td>10-15</td><td>Risk Prioritization</td>
+                    </tr>
+                    <tr data-role="Vulnerability Assessor" data-level="Senior" data-experience="5" data-salary="2000000">
+                        <td>Vulnerability Assessor</td><td>Senior</td><td>5+</td><td>20-30</td><td>Program Management</td>
+                    </tr>
+                    <tr data-role="Compliance Officer" data-level="Mid" data-experience="3" data-salary="1000000">
+                        <td>Compliance Officer</td><td>Mid</td><td>3-5</td><td>10-15</td><td>GDPR, ISO Knowledge</td>
+                    </tr>
+                    <tr data-role="Compliance Officer" data-level="Senior" data-experience="5" data-salary="2000000">
+                        <td>Compliance Officer</td><td>Senior</td><td>5+</td><td>20-30</td><td>Audit Leadership</td>
+                    </tr>
+                    <tr data-role="Network Security Engineer" data-level="Entry" data-experience="0" data-salary="500000">
+                        <td>Network Security Engineer</td><td>Entry</td><td>0-2</td><td>5-8</td><td>Cisco, Firewalls</td>
+                    </tr>
+                    <tr data-role="Network Security Engineer" data-level="Mid" data-experience="3" data-salary="1000000">
+                        <td>Network Security Engineer</td><td>Mid</td><td>3-5</td><td>10-15</td><td>IDS/IPS</td>
+                    </tr>
+                    <tr data-role="Network Security Engineer" data-level="Senior" data-experience="5" data-salary="2000000">
+                        <td>Network Security Engineer</td><td>Senior</td><td>5+</td><td>20-30</td><td>Network Architecture</td>
+                    </tr>
+                    <tr data-role="Cloud Security Specialist" data-level="Entry" data-experience="0" data-salary="600000">
+                        <td>Cloud Security Specialist</td><td>Entry</td><td>0-2</td><td>6-10</td><td>AWS, Azure Basics</td>
+                    </tr>
+                    <tr data-role="Cloud Security Specialist" data-level="Mid" data-experience="3" data-salary="1200000">
+                        <td>Cloud Security Specialist</td><td>Mid</td><td>3-5</td><td>12-20</td><td>Cloud Encryption</td>
+                    </tr>
+                    <tr data-role="Cloud Security Specialist" data-level="Senior" data-experience="5" data-salary="2500000">
+                        <td>Cloud Security Specialist</td><td>Senior</td><td>5+</td><td>25-40</td><td>Cloud Architecture</td>
+                    </tr>
+                    <tr data-role="Malware Analyst" data-level="Entry" data-experience="0" data-salary="550000">
+                        <td>Malware Analyst</td><td>Entry</td><td>0-2</td><td>5.5-9</td><td>Reverse Engineering Basics</td>
+                    </tr>
+                    <tr data-role="Malware Analyst" data-level="Mid" data-experience="3" data-salary="1100000">
+                        <td>Malware Analyst</td><td>Mid</td><td>3-5</td><td>11-18</td><td>Disassembly Tools</td>
+                    </tr>
+                    <tr data-role="Malware Analyst" data-level="Senior" data-experience="5" data-salary="2200000">
+                        <td>Malware Analyst</td><td>Senior</td><td>5+</td><td>22-35</td><td>Advanced Malware Research</td>
+                    </tr>
+                    <tr data-role="SOC Analyst" data-level="Entry" data-experience="0" data-salary="400000">
+                        <td>SOC Analyst</td><td>Entry</td><td>0-2</td><td>4-7</td><td>Monitoring Tools</td>
+                    </tr>
+                    <tr data-role="SOC Analyst" data-level="Mid" data-experience="3" data-salary="800000">
+                        <td>SOC Analyst</td><td>Mid</td><td>3-5</td><td>8-12</td><td>Incident Triage</td>
+                    </tr>
+                    <tr data-role="SOC Analyst" data-level="Senior" data-experience="5" data-salary="1500000">
+                        <td>SOC Analyst</td><td>Senior</td><td>5+</td><td>15-25</td><td>SOC Operations Lead</td>
+                    </tr>
+                    <tr data-role="Information Security Manager" data-level="Mid" data-experience="5" data-salary="1500000">
+                        <td>Information Security Manager</td><td>Mid</td><td>5-7</td><td>15-25</td><td>Team Management</td>
+                    </tr>
+                    <tr data-role="Information Security Manager" data-level="Senior" data-experience="8" data-salary="3000000">
+                        <td>Information Security Manager</td><td>Senior</td><td>8+</td><td>30-50</td><td>Strategic Planning</td>
+                    </tr>
+                    <tr data-role="Threat Intelligence Analyst" data-level="Entry" data-experience="0" data-salary="500000">
+                        <td>Threat Intelligence Analyst</td><td>Entry</td><td>0-2</td><td>5-8</td><td>Threat Research</td>
+                    </tr>
+                    <tr data-role="Threat Intelligence Analyst" data-level="Mid" data-experience="3" data-salary="1000000">
+                        <td>Threat Intelligence Analyst</td><td>Mid</td><td>3-5</td><td>10-15</td><td>OSINT Tools</td>
+                    </tr>
+                    <tr data-role="Threat Intelligence Analyst" data-level="Senior" data-experience="5" data-salary="2000000">
+                        <td>Threat Intelligence Analyst</td><td>Senior</td><td>5+</td><td>20-30</td><td>Intelligence Reporting</td>
+                    </tr>
+                    <tr data-role="Security Consultant" data-level="Mid" data-experience="3" data-salary="1000000">
+                        <td>Security Consultant</td><td>Mid</td><td>3-5</td><td>10-15</td><td>Risk Assessments</td>
+                    </tr>
+                    <tr data-role="Security Consultant" data-level="Senior" data-experience="5" data-salary="2000000">
+                        <td>Security Consultant</td><td>Senior</td><td>5+</td><td>20-30</td><td>Client Advisory</td>
+                    </tr>
+                    <tr data-role="Application Security Engineer" data-level="Entry" data-experience="0" data-salary="600000">
+                        <td>Application Security Engineer</td><td>Entry</td><td>0-2</td><td>6-10</td><td>Code Review</td>
+                    </tr>
+                    <tr data-role="Application Security Engineer" data-level="Mid" data-experience="3" data-salary="1200000">
+                        <td>Application Security Engineer</td><td>Mid</td><td>3-5</td><td>12-20</td><td>SAST/DAST</td>
+                    </tr>
+                    <tr data-role="Application Security Engineer" data-level="Senior" data-experience="5" data-salary="2500000">
+                        <td>Application Security Engineer</td><td>Senior</td><td>5+</td><td>25-40</td><td>Secure SDLC</td>
+                    </tr>
+                    <tr data-role="IAM Specialist" data-level="Entry" data-experience="0" data-salary="500000">
+                        <td>IAM Specialist</td><td>Entry</td><td>0-2</td><td>5-8</td><td>Access Controls</td>
+                    </tr>
+                    <tr data-role="IAM Specialist" data-level="Mid" data-experience="3" data-salary="1000000">
+                        <td>IAM Specialist</td><td>Mid</td><td>3-5</td><td>10-15</td><td>Okta, Active Directory</td>
+                    </tr>
+                    <tr data-role="IAM Specialist" data-level="Senior" data-experience="5" data-salary="2000000">
+                        <td>IAM Specialist</td><td>Senior</td><td>5+</td><td>20-30</td><td>IAM Architecture</td>
+                    </tr>
+                    <tr data-role="Risk Analyst" data-level="Entry" data-experience="0" data-salary="450000">
+                        <td>Risk Analyst</td><td>Entry</td><td>0-2</td><td>4.5-7</td><td>Risk Identification</td>
+                    </tr>
+                    <tr data-role="Risk Analyst" data-level="Mid" data-experience="3" data-salary="900000">
+                        <td>Risk Analyst</td><td>Mid</td><td>3-5</td><td>9-14</td><td>Quantitative Analysis</td>
+                    </tr>
+                    <tr data-role="Risk Analyst" data-level="Senior" data-experience="5" data-salary="1800000">
+                        <td>Risk Analyst</td><td>Senior</td><td>5+</td><td>18-28</td><td>Risk Strategy</td>
+                    </tr>
+                    <tr data-role="Data Privacy Officer" data-level="Mid" data-experience="5" data-salary="1500000">
+                        <td>Data Privacy Officer</td><td>Mid</td><td>5-7</td><td>15-25</td><td>Privacy Laws</td>
+                    </tr>
+                    <tr data-role="Data Privacy Officer" data-level="Senior" data-experience="8" data-salary="3000000">
+                        <td>Data Privacy Officer</td><td>Senior</td><td>8+</td><td>30-50</td><td>Compliance Oversight</td>
+                    </tr>
+                    <tr data-role="DevSecOps Engineer" data-level="Mid" data-experience="3" data-salary="1200000">
+                        <td>DevSecOps Engineer</td><td>Mid</td><td>3-5</td><td>12-20</td><td>CI/CD Security</td>
+                    </tr>
+                    <tr data-role="DevSecOps Engineer" data-level="Senior" data-experience="5" data-salary="2500000">
+                        <td>DevSecOps Engineer</td><td>Senior</td><td>5+</td><td>25-40</td><td>Pipeline Architecture</td>
+                    </tr>
+                    <tr data-role="AI Security Specialist" data-level="Entry" data-experience="0" data-salary="700000">
+                        <td>AI Security Specialist</td><td>Entry</td><td>0-2</td><td>7-12</td><td>AI Vulnerabilities</td>
+                    </tr>
+                    <tr data-role="AI Security Specialist" data-level="Mid" data-experience="3" data-salary="1500000">
+                        <td>AI Security Specialist</td><td>Mid</td><td>3-5</td><td>15-25</td><td>Model Hardening</td>
+                    </tr>
+                    <tr data-role="AI Security Specialist" data-level="Senior" data-experience="5" data-salary="3000000">
+                        <td>AI Security Specialist</td><td>Senior</td><td>5+</td><td>30-50</td><td>AI Ethics and Security</td>
+                    </tr>
+                    <tr data-role="IoT Security Specialist" data-level="Entry" data-experience="0" data-salary="600000">
+                        <td>IoT Security Specialist</td><td>Entry</td><td>0-2</td><td>6-10</td><td>Device Security</td>
+                    </tr>
+                    <tr data-role="IoT Security Specialist" data-level="Mid" data-experience="3" data-salary="1200000">
+                        <td>IoT Security Specialist</td><td>Mid</td><td>3-5</td><td>12-20</td><td>Network Protocols</td>
+                    </tr>
+                    <tr data-role="IoT Security Specialist" data-level="Senior" data-experience="5" data-salary="2500000">
+                        <td>IoT Security Specialist</td><td>Senior</td><td>5+</td><td>25-40</td><td>IoT Architecture</td>
+                    </tr>
+                    <tr data-role="Cyber Threat Hunter" data-level="Mid" data-experience="3" data-salary="1200000">
+                        <td>Cyber Threat Hunter</td><td>Mid</td><td>3-5</td><td>12-20</td><td>Proactive Hunting</td>
+                    </tr>
+                    <tr data-role="Cyber Threat Hunter" data-level="Senior" data-experience="5" data-salary="2500000">
+                        <td>Cyber Threat Hunter</td><td>Senior</td><td>5+</td><td>25-40</td><td>Advanced Threat Detection</td>
+                    </tr>
+                    <tr data-role="Security Auditor" data-level="Mid" data-experience="3" data-salary="1000000">
+                        <td>Security Auditor</td><td>Mid</td><td>3-5</td><td>10-15</td><td>Audit Tools</td>
+                    </tr>
+                    <tr data-role="Security Auditor" data-level="Senior" data-experience="5" data-salary="2000000">
+                        <td>Security Auditor</td><td>Senior</td><td>5+</td><td>20-30</td><td>Compliance Audits</td>
+                    </tr>
+                    <tr data-role="Blockchain Security Specialist" data-level="Entry" data-experience="0" data-salary="700000">
+                        <td>Blockchain Security Specialist</td><td>Entry</td><td>0-2</td><td>7-12</td><td>Smart Contracts</td>
+                    </tr>
+                    <tr data-role="Blockchain Security Specialist" data-level="Mid" data-experience="3" data-salary="1500000">
+                        <td>Blockchain Security Specialist</td><td>Mid</td><td>3-5</td><td>15-25</td><td>Blockchain Auditing</td>
+                    </tr>
+                    <tr data-role="Blockchain Security Specialist" data-level="Senior" data-experience="5" data-salary="3000000">
+                        <td>Blockchain Security Specialist</td><td>Senior</td><td>5+</td><td>30-50</td><td>Decentralized Security</td>
+                    </tr>
+                    <tr data-role="Endpoint Security Specialist" data-level="Entry" data-experience="0" data-salary="500000">
+                        <td>Endpoint Security Specialist</td><td>Entry</td><td>0-2</td><td>5-8</td><td>Antivirus Management</td>
+                    </tr>
+                    <tr data-role="Endpoint Security Specialist" data-level="Mid" data-experience="3" data-salary="1000000">
+                        <td>Endpoint Security Specialist</td><td>Mid</td><td>3-5</td><td>10-15</td><td>EDR Tools</td>
+                    </tr>
+                    <tr data-role="Endpoint Security Specialist" data-level="Senior" data-experience="5" data-salary="2000000">
+                        <td>Endpoint Security Specialist</td><td>Senior</td><td>5+</td><td>20-30</td><td>Endpoint Architecture</td>
+                    </tr>
+                    <tr data-role="Red Teamer" data-level="Mid" data-experience="3" data-salary="1200000">
+                        <td>Red Teamer</td><td>Mid</td><td>3-5</td><td>12-20</td><td>Attack Simulation</td>
+                    </tr>
+                    <tr data-role="Red Teamer" data-level="Senior" data-experience="5" data-salary="2500000">
+                        <td>Red Teamer</td><td>Senior</td><td>5+</td><td>25-40</td><td>Red Team Leadership</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="all-positions" >
+            <h2>All Positions</h2>
+            <p>A comprehensive list of cybersecurity positions, grouped by categories. Expand each for details.</p>
+            <div class="job-category">
+                <h2>Defensive Roles</h2>
+                <details>
+                    <summary><i class="fas fa-shield-alt"></i>Cybersecurity Analyst</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Monitors and protects systems from cyber threats, investigates breaches, and implements security measures. Daily tasks include log analysis, vulnerability scanning. Skills: Firewalls, encryption, Python. Tools: Wireshark, Splunk. Outlook: High demand, salary 5-30 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Computer Science, CompTIA Security+, CISSP.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-shield-alt"></i>SOC Analyst</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Operates in a Security Operations Center to monitor threats in real-time. Tasks include alert triage, incident escalation. Skills: SIEM, network monitoring. Tools: ELK Stack, QRadar. Outlook: Growing demand, salary 4-25 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> Associate degree, Security+, GIAC.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-shield-alt"></i>Incident Response Specialist</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Responds to security incidents, contains breaches, and recovers systems. Tasks: Forensics, root cause analysis. Skills: Incident handling, communication. Tools: EnCase, FTK. Outlook: Critical role, salary 5.5-40 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in IT, GIAC Certified Incident Handler.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-shield-alt"></i>Endpoint Security Specialist</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Secures endpoints like laptops and mobiles from threats. Tasks: Deploy EDR, manage policies. Skills: Antivirus, patch management. Tools: CrowdStrike, Microsoft Defender. Outlook: Increasing with remote work, salary 5-30 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Cybersecurity, CompTIA CySA+.</p>
+                    </div>
+                </details>
+            </div>
+            <div class="job-category">
+                <h2>Offensive Roles</h2>
+                <details>
+                    <summary><i class="fas fa-bug"></i>Penetration Tester</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Simulates cyberattacks to find vulnerabilities. Tasks: Ethical hacking, reporting. Skills: Exploitation, web app testing. Tools: Metasploit, Burp Suite. Outlook: High demand, salary 6-40 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in CS, CEH, OSCP.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-bug"></i>Vulnerability Assessor</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Scans systems for vulnerabilities and prioritizes fixes. Tasks: Vulnerability management, reporting. Skills: Scanning, risk analysis. Tools: Nessus, OpenVAS. Outlook: Essential, salary 5-30 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in IT, CompTIA PenTest+.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-bug"></i>Red Teamer</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Conducts advanced adversary simulations. Tasks: Full-scope attacks, debriefs. Skills: Social engineering, persistence. Tools: Cobalt Strike. Outlook: Specialized, salary 12-40 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Cybersecurity, GPEN.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-bug"></i>Cyber Threat Hunter</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Proactively searches for hidden threats in networks. Tasks: Hypothesis-driven hunting. Skills: Forensics, analytics. Tools: Splunk, Elastic. Outlook: Emerging, salary 12-40 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in CS, GCTH.</p>
+                    </div>
+                </details>
+            </div>
+            <div class="job-category">
+                <h2>Engineering Roles</h2>
+                <details>
+                    <summary><i class="fas fa-cogs"></i>Security Engineer</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Designs and implements security systems. Tasks: Configure firewalls, develop policies. Skills: Networking, programming. Tools: Palo Alto, Cisco. Outlook: Core role, salary 5-35 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Engineering, CCNA Security.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-cogs"></i>Network Security Engineer</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Secures network infrastructure. Tasks: Implement IDS, monitor traffic. Skills: Routing, switching. Tools: Wireshark, Fortinet. Outlook: Steady demand, salary 5-30 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Networking, CCNP Security.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-cogs"></i>Application Security Engineer</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Ensures applications are secure from development to deployment. Tasks: Code reviews, threat modeling. Skills: Secure coding, DevOps. Tools: SonarQube, Veracode. Outlook: Growing with software, salary 6-40 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Software Engineering, CSSLP.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-cogs"></i>Cloud Security Specialist</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Protects cloud environments. Tasks: Configure IAM, monitor logs. Skills: AWS/Azure security. Tools: CloudTrail, Sentinel. Outlook: High growth, salary 6-40 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Cloud Computing, CCSP.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-cogs"></i>DevSecOps Engineer</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Integrates security into DevOps pipelines. Tasks: Automate security checks. Skills: CI/CD, scripting. Tools: Jenkins, Terraform. Outlook: Modern role, salary 12-40 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in DevOps, DevSecOps certs.</p>
+                    </div>
+                </details>
+            </div>
+            <div class="job-category">
+                <h2>Management Roles</h2>
+                <details>
+                    <summary><i class="fas fa-user-tie"></i>Information Security Manager</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Mid (5-7 years), Senior (8+ years)</p>
+                        <p><strong>Description:</strong> Oversees security programs and teams. Tasks: Policy development, risk management. Skills: Leadership, strategy. Tools: GRC platforms. Outlook: Leadership position, salary 15-50 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> MBA, CISM.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-user-tie"></i>Chief Information Security Officer (CISO)</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Senior (10+ years)</p>
+                        <p><strong>Description:</strong> Leads organization-wide security strategy. Tasks: Board reporting, budget management. Skills: Executive communication. Tools: Enterprise tools. Outlook: Top role, salary 50-100 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> MS in Cybersecurity, CISSP, C|CISO.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-user-tie"></i>Compliance Officer</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Ensures compliance with laws and standards. Tasks: Audits, training. Skills: Regulatory knowledge. Tools: Compliance software. Outlook: Required in regulated industries, salary 10-30 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Law/IT, CRISC.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-user-tie"></i>Security Consultant</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Advises clients on security best practices. Tasks: Assessments, recommendations. Skills: Consulting, analysis. Tools: Various. Outlook: Flexible, salary 10-30 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Cybersecurity, CISA.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-user-tie"></i>Data Privacy Officer</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Mid (5-7 years), Senior (8+ years)</p>
+                        <p><strong>Description:</strong> Manages data privacy compliance. Tasks: Privacy impact assessments. Skills: GDPR, CCPA. Tools: Privacy tools. Outlook: Rising with data laws, salary 15-50 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Law, CIPP.</p>
+                    </div>
+                </details>
+            </div>
+            <div class="job-category">
+                <h2>Specialized Roles</h2>
+                <details>
+                    <summary><i class="fas fa-search"></i>Digital Forensics Analyst</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Investigates digital evidence for crimes. Tasks: Data recovery, analysis. Skills: Forensics, chain of custody. Tools: Autopsy, Volatility. Outlook: Forensic demand, salary 5-30 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Forensics, GCFE.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-search"></i>Malware Analyst</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Analyzes malware to understand and mitigate. Tasks: Reverse engineering. Skills: Assembly, debugging. Tools: IDA Pro, Ghidra. Outlook: Constant threats, salary 5.5-35 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in CS, GREM.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-search"></i>Threat Intelligence Analyst</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Gathers and analyzes threat data. Tasks: Report writing, IOCs. Skills: OSINT, analysis. Tools: MISP, ThreatConnect. Outlook: Intelligence focus, salary 5-30 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Intelligence, CTIA.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-search"></i>Cryptographer</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Develops encryption systems. Tasks: Algorithm design. Skills: Math, crypto. Tools: OpenSSL. Outlook: Niche, salary 7-50 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> MS in Math, CC.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-search"></i>Security Architect</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Designs secure systems architecture. Tasks: Blueprint creation. Skills: Design, risk. Tools: Visio, TOGAF. Outlook: Architectural, salary 15-50 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Architecture, CISSP-ISSAP.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-search"></i>IAM Specialist</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Manages identity and access. Tasks: Role-based access. Skills: Authentication. Tools: SailPoint, Okta. Outlook: Access control, salary 5-30 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in IT, CIAM.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-search"></i>Risk Analyst</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Identifies and mitigates risks. Tasks: Risk assessments. Skills: Quantitative, qualitative. Tools: RiskWatch. Outlook: Risk management, salary 4.5-28 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Finance/IT, CRISC.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-search"></i>AI Security Specialist</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Secures AI systems from attacks. Tasks: Model protection. Skills: ML, adversarial attacks. Tools: TensorFlow, PyTorch. Outlook: Emerging, salary 7-50 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> MS in AI, Specialized certs.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-search"></i>IoT Security Specialist</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Protects IoT devices and networks. Tasks: Device hardening. Skills: Embedded systems. Tools: Armis, Zigbee. Outlook: Growing with IoT, salary 6-40 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Electronics, CIoTSP.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-search"></i>Blockchain Security Specialist</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Entry (0-2 years), Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Secures blockchain technologies. Tasks: Smart contract audits. Skills: Solidity, crypto. Tools: Mythril, Slither. Outlook: Niche growth, salary 7-50 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in CS, CBSP.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary><i class="fas fa-search"></i>Security Auditor</summary>
+                    <div class="job-details">
+                        <p><strong>Levels:</strong> Mid (3-5 years), Senior (5+ years)</p>
+                        <p><strong>Description:</strong> Conducts security audits. Tasks: Compliance checks. Skills: Auditing standards. Tools: Nmap, Audit software. Outlook: Regulatory, salary 10-30 LPA.</p>
+                        <p><strong>Education & Certifications:</strong> BS in Accounting/IT, CISA.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+        <section id="about" style="display: none;">
+            <h2>About Cybersecurity</h2>
+            <p>Cybersecurity is the practice of protecting systems, networks, and data from digital attacks. It's crucial in today's world due to increasing cyber threats.</p>
+            <p>Importance: Protects sensitive information, prevents financial loss, maintains trust.</p>
+            <p>Growth: The field is expected to grow 32% by 2030, with millions of jobs worldwide. In India, demand is high in IT, finance, govt.</p>
+            <p>Tips for Entering: Get a degree in CS/IT, earn certs like Security+, gain experience via internships, learn tools like Kali Linux.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Cybersecurity Careers Explorer. All rights reserved.</p>
+    </footer>
+    <script>
+        // Navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = e.target.getAttribute('href');
+                document.querySelectorAll('main section').forEach(sec => sec.style.display = 'none');
+                document.querySelector(target).style.display = 'block';
+                if (target !== '#home' && target !== '#all-positions') {
+                    document.getElementById('search').style.display = 'none';
+                } else {
+                    document.getElementById('search').style.display = 'block';
+                }
+            });
+        });
+
+        // Search filter for all positions and home
+        document.getElementById('search').addEventListener('keyup', e => {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('#all-positions details').forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(term) ? 'block' : 'none';
+            });
+        });
+
+        // Sortable table
+        const table = document.getElementById('levels-table');
+        const headers = table.querySelectorAll('th');
+        headers.forEach((header, index) => {
+            header.addEventListener('click', () => {
+                const sortKey = header.dataset.sort;
+                const rows = Array.from(table.tBodies[0].rows);
+                const isNumeric = sortKey === 'experience' || sortKey === 'salary';
+                rows.sort((a, b) => {
+                    let valA = a.dataset[sortKey];
+                    let valB = b.dataset[sortKey];
+                    if (isNumeric) {
+                        valA = parseFloat(valA);
+                        valB = parseFloat(valB);
+                        return valA - valB;
+                    } else {
+                        return valA.localeCompare(valB);
+                    }
+                });
+                // Toggle sort direction if same header clicked again
+                if (header.dataset.order === 'asc') {
+                    rows.reverse();
+                    header.dataset.order = 'desc';
+                } else {
+                    header.dataset.order = 'asc';
+                }
+                rows.forEach(row => table.tBodies[0].appendChild(row));
+            });
+        });
+
+        // Show home by default
+        document.querySelector('#home').style.display = 'block';
+    </script>
+</body>
+</html>
